@@ -12,6 +12,8 @@ contract SendMessage {
     constructor(address _link, address _router) {
         link = _link;
         router = _router;
+
+        LinkTokenInterface(link).approve(address(router), type(uint256).max);
     }
 
     function sendMessage(address receiver, string memory text, uint64 destChainSelector) external {
